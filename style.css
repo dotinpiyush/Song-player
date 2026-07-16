@@ -1,37 +1,33 @@
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
-@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&family=Roboto:ital,wght@0,100..900;1,100..900&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Poppins:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Raleway:ital,wght@0,100..900;1,100..900&display=swap');
 
 body {
-    background-color: #fff;
+    background-color: #000;
+    margin: 0;
+    padding: 0;
+    font-family: "Poppins", sans-serif;
 }
 
 * {
     margin: 0;
     padding: 0;
-
+    box-sizing: border-box;
 }
 
 nav {
     font-family: "Roboto", sans-serif;
 }
 
-nav ul li {
-    padding: 0 12px;
-}
-
 nav ul {
     display: flex;
     align-items: center;
-    /* justify-content: space-between; */
     list-style-type: none;
     height: 59px;
     background-color: black;
     color: aqua;
 }
 
-.brand img {
-    width: 50px;
-    padding: 0 8px;
+nav ul li {
+    padding: 0 12px;
 }
 
 .brand {
@@ -40,10 +36,12 @@ nav ul {
     font-weight: bolder;
     font-size: 1.2rem;
 }
-songItemContainer
-{
-    margin-top: 34px;
+
+.brand img {
+    width: 50px;
+    padding: 0 8px;
 }
+
 .container {
     min-height: 60vh;
     background-color: black;
@@ -51,71 +49,241 @@ songItemContainer
     font-family: "Poppins", sans-serif;
     margin: 23px auto;
     display: flex;
-    width: 70%;
+    width: 90%;
+    max-width: 1200px;
     border-radius: 12px;
     padding: 34px;
     background-image: url('bg.jpg');
+    background-size: cover;
+    background-position: center;
 }
 
-.bottom {
-    position: sticky;
-    height: 130px;
-    background-color: black;
+.songlist {
+    flex: 1;
+    min-width: 300px;
+}
+
+.songlist h1 {
+    margin-bottom: 20px;
+    font-size: 2rem;
+}
+
+.songItemContainer {
+    margin-top: 34px;
     display: flex;
-    justify-content: center;
-    bottom: 0;
-    align-items: center;
-    color: azure;
     flex-direction: column;
-
-}
-
-.icons {
-    margin-top: 16px;
-}
-
-.icons i {
-    cursor: pointer;
-}
-
-#myProgressbar {
-    width: 80vw;
-    cursor: pointer;
+    gap: 8px;
+    max-height: 60vh;
+    overflow-y: auto;
 }
 
 .songItem {
     height: 50px;
     display: flex;
     background-color: #fff;
-    /* width: 70%; */
     color: #000;
-    margin: 12px 0 ;
+    margin: 0;
     justify-content: space-between;
     align-items: center;
     border-radius: 32px;
+    padding: 0 10px;
+    cursor: pointer;
+    transition: all 0.3s ease;
+}
 
+.songItem:hover {
+    background-color: #1db954;
+    color: #fff;
+}
+
+.songItem.active {
+    background-color: #1db954;
+    color: #fff;
 }
 
 .songItem img {
     width: 43px;
-    margin: 0 23px;
+    height: 43px;
+    margin-right: 15px;
     border-radius: 34px;
+    object-fit: cover;
+}
+
+.songItem-info {
+    flex: 1;
+    overflow: hidden;
+}
+
+.songItem span {
+    display: block;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+}
+
+.songName {
+    font-weight: 600;
 }
 
 .timestamp {
-    margin: 0;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    margin-left: auto;
+    font-size: 0.9rem;
 }
 
 .timestamp i {
     cursor: pointer;
+    transition: transform 0.2s;
+}
+
+.timestamp i:hover {
+    transform: scale(1.2);
+}
+
+.songBanner {
+    flex: 1;
+    background-color: rgba(0, 0, 0, 0.5);
+    border-radius: 12px;
+    margin-left: 20px;
+    min-width: 300px;
+    display: none;
+}
+
+.bottom {
+    position: sticky;
+    height: auto;
+    background-color: #000;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: azure;
+    flex-direction: column;
+    gap: 15px;
+    padding: 15px;
+    bottom: 0;
+    border-top: 1px solid #333;
+}
+
+.controls-wrapper {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    width: 100%;
+}
+
+#myProgressbar {
+    flex: 1;
+    cursor: pointer;
+    height: 6px;
+    min-width: 200px;
+}
+
+#myProgressbar::-webkit-slider-thumb {
+    appearance: none;
+    width: 15px;
+    height: 15px;
+    background: #1db954;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#myProgressbar::-moz-range-thumb {
+    width: 15px;
+    height: 15px;
+    background: #1db954;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+.time-display {
+    display: flex;
+    gap: 10px;
+    font-size: 0.85rem;
+    min-width: 80px;
+}
+
+.icons {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 20px;
+}
+
+.icons i {
+    cursor: pointer;
+    font-size: 1.5rem;
+    transition: color 0.3s, transform 0.3s;
+}
+
+.icons i:hover {
+    color: #1db954;
+    transform: scale(1.2);
+}
+
+#volumeControl {
+    width: 100px;
+    height: 4px;
+    cursor: pointer;
+}
+
+#volumeControl::-webkit-slider-thumb {
+    appearance: none;
+    width: 12px;
+    height: 12px;
+    background: #1db954;
+    cursor: pointer;
+    border-radius: 50%;
+}
+
+#volumeControl::-moz-range-thumb {
+    width: 12px;
+    height: 12px;
+    background: #1db954;
+    cursor: pointer;
+    border-radius: 50%;
 }
 
 .songinfo {
-    position: absolute;
-    left: 10vw;
-     font-family: "Poppins", sans-serif;
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    font-family: "Poppins", sans-serif;
+    justify-content: center;
+    flex-wrap: wrap;
 }
- .songinfo img {
-    /* opacity: 0; */
+
+.songinfo img {
     transition: opacity 0.8s ease-in;
- }
+}
+
+/* Responsive Design */
+@media (max-width: 768px) {
+    .container {
+        flex-direction: column;
+        width: 95%;
+        padding: 20px;
+    }
+
+    .songBanner {
+        margin-left: 0;
+        margin-top: 20px;
+    }
+
+    .icons {
+        gap: 15px;
+    }
+
+    .icons i {
+        font-size: 1.2rem;
+    }
+
+    #volumeControl {
+        width: 80px;
+    }
+
+    .songlist h1 {
+        font-size: 1.5rem;
+    }
+}
