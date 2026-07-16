@@ -19,9 +19,19 @@
 
     <div class="container">
         <div class="songlist">
-            <h1>Best Of NCS - No copyright</h1>
+            <div class="header-section">
+                <h1>Best Of NCS - No copyright</h1>
+                <div class="search-container">
+                    <i class="fa-solid fa-search search-icon"></i>
+                    <input type="text" id="searchInput" class="search-bar" placeholder="Search songs...">
+                </div>
+            </div>
             <div class="songItemContainer" id="songItemContainer">
                 <!-- Songs will be dynamically generated here -->
+            </div>
+            <div class="no-results" id="noResults" style="display: none;">
+                <i class="fa-solid fa-music"></i>
+                <p>No songs found. Try a different search!</p>
             </div>
         </div>
         <div class="songBanner"></div>
@@ -32,14 +42,18 @@
             <input type="range" name="range" id="myProgressbar" min="0" max="100" value="0" aria-label="Song progress">
             <div class="time-display">
                 <span id="currentTime">0:00</span>
+                <span>/</span>
                 <span id="duration">0:00</span>
             </div>
         </div>
         <div class="icons">
-            <i class="fa-solid fa-backward" id="previous" title="Previous song"></i>
+            <i class="fa-solid fa-backward-step" id="previous" title="Previous song"></i>
             <i class="fa-regular fa-circle-play" id="masterPlay" title="Play/Pause"></i>
-            <i class="fa-solid fa-forward" id="next" title="Next song"></i>
-            <input type="range" id="volumeControl" min="0" max="100" value="100" title="Volume">
+            <i class="fa-solid fa-forward-step" id="next" title="Next song"></i>
+            <div class="volume-container">
+                <i class="fa-solid fa-volume-high volume-icon"></i>
+                <input type="range" id="volumeControl" min="0" max="100" value="100" title="Volume">
+            </div>
         </div>
         <div class="songinfo">
             <img src="playing.gif" width="32px" id="gif" alt="Playing animation" style="opacity: 0;">
